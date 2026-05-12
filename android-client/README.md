@@ -23,3 +23,6 @@ This module adds Android client support for the Python messaging server (`app.py
 
 - Media for voice/video calls should be implemented via Android WebRTC; this client currently handles signaling only.
 - For production, run messaging over TLS (`wss://`) and add certificate pinning.
+
+
+A basic `MainActivity` GUI is included with connect, DM, and call-offer actions.
