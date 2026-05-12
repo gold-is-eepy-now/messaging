@@ -69,3 +69,7 @@ Federated payloads are wrapped as:
 - timestamp freshness (anti-replay window)
 
 This gives integrity + origin authenticity for inter-server transfers.
+
+## Android support
+
+An Android client scaffold is included in `android-client/` with a Kotlin `FedChatClient` class that can register users, send DMs, manage groups, and exchange call signaling messages over WebSocket. See `android-client/README.md` for setup in Android Studio.
