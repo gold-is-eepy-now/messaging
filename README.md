@@ -84,3 +84,25 @@ python desktop_gui.py
 ```
 
 The GUI supports connect/register, DM, group actions, and call-offer signaling.
+
+## FreeBSD support
+
+The Python server, CLI client, and Tkinter desktop GUI are designed to run on FreeBSD as long as Python, Tkinter, and the websocket dependency are installed. The Android client remains an Android project and is built with Android Studio/Gradle, not directly on FreeBSD as a native app.
+
+### FreeBSD install
+
+```bash
+pkg install python py311-tkinter py311-pip
+python -m venv .venv
+. .venv/bin/activate
+pip install -r requirements.txt
+```
+
+If your FreeBSD package set uses a newer Python version, install the matching Tkinter package, for example `py312-tkinter`, instead of `py311-tkinter`.
+
+### FreeBSD networking notes
+
+- Bind servers with `--host 0.0.0.0` or a specific LAN/Tailscale interface address.
+- Open the client and federation ports in `pf`, `ipfw`, or your network firewall.
+- Use reachable server IDs such as `100.x.y.z:9102`, `host.tailnet-name.ts.net:9102`, or `lan-hostname:9102` so federated recipients like `bob@host.tailnet-name.ts.net:9102` route correctly.
+- Prefer `wss://` for untrusted networks. Plain `ws://` can be acceptable on an encrypted private overlay such as Tailscale, but the app currently only signs federation envelopes and does not encrypt client payloads itself.
